@@ -16,4 +16,4 @@ below with your own customization. Remember to keep the names and sizes.
 - [ground.png](https://raw.githubusercontent.com/r3vl1s/barkley-bird/gh-pages/data/img/ground.png) - Size: `900x96px`. The animated ground image.
 - [logo.png](https://raw.githubusercontent.com/r3vl1s/barkley-bird/gh-pages/data/img/logo_barkley.png) - Size: `351x145px`. The game logo.
 - [new.png](https://raw.githubusercontent.com/r3vl1s/barkley-bird/gh-pages/data/img/new.png) - Size: `48x48px`. This is the NEW notification when the user reaches a new score.
-- [pipe.png](https://raw.githubusercontent.com/r3vl1s/barkley-bird/gh-pages/data/img/pipe_sh.png) - Size: `148x1664px`. Why the hell this is so big?! Because of the logic used for the random pipes position.
+- [pipe.png](https://raw.githubusercontent.com/r3vl1s/barkley-bird/gh-pages/data/img/sh_pipe.png) - Size: `148x1664px`. Why the hell this is so big?! Because of the logic used for the random pipes position.
