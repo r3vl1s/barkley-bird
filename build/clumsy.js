@@ -17,6 +17,9 @@ var game = {
         me.loader.onload = this.loaded.bind(this);
         me.loader.preload(game.resources);
         me.state.change(me.state.LOADING);
+        window.onload(function() {
+            me.plugin.register.defer(this, Clayio, "clay");
+        });
     },
 
     "loaded": function() {
@@ -44,6 +47,7 @@ game.resources = [
     {name: "clumsy", type:"image", src: "data/img/shane.png"},
     {name: "pipe", type:"image", src: "data/img/sh_pipe.png"},
     {name: "logo", type:"image", src: "data/img/logo_barkley.png"},
+    {name: "leader", type:"image", src: "data/img/leader.png"},
     {name: "ground", type:"image", src: "data/img/ground.png"},
     {name: "gameover", type:"image", src: "data/img/gameover.png"},
     {name: "gameoverbg", type:"image", src: "data/img/gameoverbg.png"},
@@ -409,6 +413,19 @@ var Tweet = me.GUI_Object.extend({
 
 });
 
+var Leader = me.GUI_Object.extend({
+    init: function(a,b){
+        var c = {};
+        c.image = "leader";
+        c.spritewidth = 150;
+        c.spriteheight = 75;
+        this.parent(a,b,c);
+    },
+    
+    onClick:function(event){
+        return me.plugin.clay.showLeaderBoard("clumsy"),!1}
+});
+
 game.TitleScreen = me.ScreenObject.extend({
     init: function(){
         this.font = null;
@@ -560,6 +577,7 @@ game.GameOverScreen = me.ScreenObject.extend({
 
         if (!me.save.topSteps) me.save.add({topSteps: game.data.steps});
         if (game.data.steps > me.save.topSteps) {
+            me.plugin.clay.leaderboard("clumsy");
             me.save.topSteps = game.data.steps;
             game.data.newHiScore = true;
         }
@@ -604,6 +622,11 @@ game.GameOverScreen = me.ScreenObject.extend({
         //tweet button
         this.tweet = new Tweet(this.share.pos.x + 170, buttonsHeight);
         me.game.world.addChild(this.tweet, 12);
+
+        //leaderboard button
+        this.leader=new Leader(this.tweet.pos.x + 170, buttonsHeight);
+        me.game.world.addChild(this.leader, 12);
+        
 
         // add the dialog witht he game information
         if (game.data.newHiScore) {
