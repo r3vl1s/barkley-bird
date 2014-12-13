@@ -422,8 +422,9 @@ var Leader = me.GUI_Object.extend({
         this.parent(a,b,c);
     },
     
-    onClick:function(event){
-        return me.plugin.clay.showLeaderBoard("clumsy"),!1}
+    onClick: function(event){
+        me.plugin.clay.showLeaderBoard(4893);
+    }
 });
 
 game.TitleScreen = me.ScreenObject.extend({
@@ -577,7 +578,7 @@ game.GameOverScreen = me.ScreenObject.extend({
 
         if (!me.save.topSteps) me.save.add({topSteps: game.data.steps});
         if (game.data.steps > me.save.topSteps) {
-            me.plugin.clay.leaderboard("clumsy");
+            //me.plugin.clay.leaderboard(4893);
             me.save.topSteps = game.data.steps;
             game.data.newHiScore = true;
         }
